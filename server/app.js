@@ -9,7 +9,9 @@ var usersRouter = require('./routes/users');
 require('dotenv').config()
 
 var app = express();
+var cors = require('cors')
 
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,7 +30,7 @@ const DB_URL = {
   development: process.env.DB_dev,
   test: process.env.DB_test
 }
-// console.log(process.env.NODE_ENV); // test expected
+console.log(process.env.NODE_ENV); // test expected
 
 mongoose.connect(DB_URL[process.env.NODE_ENV], { useNewUrlParser: true })
 .then((result) => {
