@@ -51,6 +51,12 @@ export default {
     checkData(idArticle) {
       // console.log(idArticle)
       this.idArticle = idArticle;
+    },
+    checkAuth() {
+      let token = localStorage.getItem('token')
+      if(!token) {
+        this.$router.push('/login')
+      }
     }
   },
   components: {
@@ -58,7 +64,11 @@ export default {
     ArticleTable,
     AddArticle,
     EditArticle
+  },
+  created() {
+    this.checkAuth()
   }
+
 };
 </script>
 
